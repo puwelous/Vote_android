@@ -5,7 +5,8 @@
     <string name="action_settings">Settings</string>
     <string name="info">Info</string>
     <string name="about">About us</string>
-    <string name="survey">My survey</string>
+    <string name="survey">My surveys</string>
+    <string name="new_survey">+</string>
     <string name="others">Vote for others</string>
     <string name="title_activity_activity_info">ActivityInfo</string>
     <string name="hello_world">Hello world!</string>
