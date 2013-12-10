@@ -16,8 +16,16 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="52dp"
-        android:text="+" />
+        android:text="@string/new_survey" />
+    
+    <ListView
+        android:id="@+id/mySurveysListView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_NewSurvey"
+        android:layout_centerHorizontal="true" >
+
+    </ListView>    
 
     <TextView
         android:id="@+id/textView1"
