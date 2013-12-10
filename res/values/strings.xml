@@ -17,5 +17,23 @@
     <string name="name">Surveys name: </string>
     <string name="startd">Start Date: </string>
     <string name="startt">Start Time: </string>
+    <string name="endd">End Date: </string>
+    <string name="endt">End Time: </string>
+    <string name="keywords">Keywords: </string>
+    <string name="create">Create </string>
+    <string name="title_activity_activity_new_questions">Activity_new_questions</string>
+    <string name="title_activity_activity_new_question">ActivityNewQuestion</string>
+    <string name="addQuest">Add Question </string>
+    <string name="title_activity_activity_add_question">ActivityAddQuestion</string>
+    <string name="quest">Question: </string>
+    <string name="answType">Answer Type: </string>
+    <string-array name="answ_opt">
+        <item>Radio button </item>
+        <item>Checkbox</item>
+    </string-array>
+    <string name="done">Done </string>
+    <string name="finish">Finish</string>
+        
+        
 
 </resources>

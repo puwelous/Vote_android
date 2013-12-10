@@ -34,13 +34,13 @@ public class MainActivity extends Activity {
 			}
 		});
 		
-		Button ShowActivitySurveyButton = (Button) findViewById
+		Button ShowActivityMySurveyButton = (Button) findViewById
 				(R.id.btn_survey);
-		ShowActivitySurveyButton.setOnClickListener(new View.OnClickListener() {
+		ShowActivityMySurveyButton.setOnClickListener(new View.OnClickListener() {
 				
 			public void onClick(View view) {
 				// TODO Auto-generated method stub
-				startActivitySurvey();
+				startActivityMySurvey();
 			}
 		});
 	}
@@ -55,8 +55,8 @@ public class MainActivity extends Activity {
 		startActivity(startTwo);
 	}
 	
-	private void startActivitySurvey(){
-		Intent startTwo= new Intent(this, ActivitySurvey.class);
+	private void startActivityMySurvey(){
+		Intent startTwo= new Intent(this, ActivityMySurvey.class);
 		startActivity(startTwo);
 	}
 

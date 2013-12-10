@@ -3,31 +3,39 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg"
+    android:gravity="center_horizontal"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".ActivityMySurvey" >
+    tools:context=".ActivityQuestions" >
 
     <Button
-        android:id="@+id/btn_NewSurvey"
+        android:id="@+id/btn_AddQuest"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="52dp"
-        android:text="+" />
+        android:layout_marginTop="26dp"
+        android:text="@string/addQuest" />
 
     <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/btn_NewSurvey"
-        android:layout_below="@+id/btn_NewSurvey"
-        android:layout_marginLeft="74dp"
-        android:layout_marginTop="60dp"
-        android:text="List of all surveys user have created or took part in"
+        android:layout_below="@+id/btn_AddQuest"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="54dp"
+        android:text="List of all questions created, if none is created, then empty"
         android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <Button
+        android:id="@+id/btn_finish"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:text="@string/finish" />
 
 </RelativeLayout>

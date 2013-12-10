@@ -1,7 +1,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="#D1D0CE"
+    android:background="@drawable/bg"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -10,41 +10,41 @@
     tools:context=".MainActivity" >
 
     <Button
-        android:id="@+id/btn_others"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btn_survey"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="33dp"
-        android:text="@string/others" />
-
-    <Button
         android:id="@+id/btn_survey"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/btn_others"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:layout_alignRight="@+id/btn_others"
-        android:layout_marginTop="63dp"
+        android:layout_marginTop="29dp"
         android:text="@string/survey" />
 
     <Button
         android:id="@+id/btn_info"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/btn_about"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_marginBottom="17dp"
-        android:layout_marginRight="22dp"
+        android:layout_marginBottom="19dp"
         android:text="@string/info" />
 
     <Button
-        android:id="@+id/btn_about"
+        android:id="@+id/btn_others"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/btn_info"
-        android:layout_marginBottom="41dp"
+        android:layout_alignLeft="@+id/btn_survey"
+        android:layout_alignRight="@+id/btn_survey"
+        android:layout_below="@+id/btn_survey"
+        android:layout_marginTop="27dp"
+        android:text="@string/others" />
+
+    <Button
+        android:id="@+id/btn_about"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btn_info"
+        android:layout_alignLeft="@+id/btn_info"
+        android:layout_marginBottom="22dp"
         android:text="@string/about" />
 
 </RelativeLayout>
