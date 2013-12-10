@@ -25,17 +25,6 @@
         android:layout_below="@+id/btn_NewSurvey"
         android:layout_centerHorizontal="true" >
 
-    </ListView>    
-
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/btn_NewSurvey"
-        android:layout_below="@+id/btn_NewSurvey"
-        android:layout_marginLeft="74dp"
-        android:layout_marginTop="60dp"
-        android:text="List of all surveys user have created or took part in"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+    </ListView>
 
 </RelativeLayout>
