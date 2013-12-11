@@ -54,12 +54,12 @@ private void startActivityCreateQuestion(){
     
     
     public void populateSetDate(int year, int month, int day) {
-            mEdit = (EditText)findViewById(R.id.editText2);
+            mEdit = (EditText)findViewById(R.id.et_answer_1);
             mEdit.setText(month+"/"+day+"/"+year);
     }
     
     public void populateSetTime(int hour, int minute) {
-            mEdit2 = (EditText)findViewById(R.id.editText3);
+            mEdit2 = (EditText)findViewById(R.id.et_answer_2);
             mEdit2.setText(hour+"/"+minute);
     }
     
