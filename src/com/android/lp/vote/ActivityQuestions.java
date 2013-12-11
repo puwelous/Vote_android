@@ -6,15 +6,27 @@ import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class ActivityQuestions extends Activity {
 
+	private Long survey_id;
+	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_activity_questions);
 	
+		// retrieve new survey ID from extras
+		Bundle extras = getIntent().getExtras();
+		if (extras != null) {
+		    survey_id = extras.getLong("NEW_SURVEY_ID");
+		}
+		
+		Toast.makeText(getApplicationContext(), "Survey ID: " + survey_id,
+				Toast.LENGTH_LONG).show();
+		
 	Button ShowActivityAddQuestButton = (Button) findViewById
 			(R.id.btn_AddQuest);
 	ShowActivityAddQuestButton.setOnClickListener(new View.OnClickListener() {

@@ -14,48 +14,53 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
-		Button ShowActivityInfoButton = (Button) findViewById
-				(R.id.btn_info);
+		final Button showActivityMySurveysButton = (Button) findViewById(R.id.btn_survey);
+		showActivityMySurveysButton
+				.setOnClickListener(new View.OnClickListener() {
+
+					public void onClick(View view) {
+						startActivityMySurveys();
+					}
+				});
+		
+		final Button showActivityVoteForOthersButton = (Button) findViewById(R.id.btn_others);
+		showActivityVoteForOthersButton
+				.setOnClickListener(new View.OnClickListener() {
+
+					public void onClick(View view) {
+
+						/* EMPTY SO FAR */
+					}
+				});		
+
+		final Button ShowActivityInfoButton = (Button) findViewById(R.id.btn_info);
 		ShowActivityInfoButton.setOnClickListener(new View.OnClickListener() {
-				
+
 			public void onClick(View view) {
-				// TODO Auto-generated method stub
 				startActivityInfo();
 			}
 		});
-		
-		Button ShowActivityAboutButton = (Button) findViewById
-				(R.id.btn_about);
+
+		Button ShowActivityAboutButton = (Button) findViewById(R.id.btn_about);
 		ShowActivityAboutButton.setOnClickListener(new View.OnClickListener() {
-				
+
 			public void onClick(View view) {
-				// TODO Auto-generated method stub
 				startActivityAbout();
 			}
 		});
-		
+	}
 
-		Button showActivityMySurveysButton = (Button) findViewById
-				(R.id.btn_survey);
-		showActivityMySurveysButton.setOnClickListener(new View.OnClickListener() {
-				
-			public void onClick(View view) {
-				startActivityMySurveys();
-			}
-		});
-	}
-	
-	private void startActivityInfo(){
-		Intent startTwo= new Intent(this, ActivityInfo.class);
+	private void startActivityInfo() {
+		Intent startTwo = new Intent(this, ActivityInfo.class);
 		startActivity(startTwo);
 	}
-	
-	private void startActivityAbout(){
-		Intent startTwo= new Intent(this, ActivityAbout.class);
+
+	private void startActivityAbout() {
+		Intent startTwo = new Intent(this, ActivityAbout.class);
 		startActivity(startTwo);
 	}
-	
-	private void startActivityMySurveys(){
+
+	private void startActivityMySurveys() {
 		Intent startMySurveysActivity = new Intent(this, ActivityMySurvey.class);
 		startActivity(startMySurveysActivity);
 	}

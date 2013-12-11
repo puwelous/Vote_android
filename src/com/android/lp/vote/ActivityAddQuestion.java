@@ -5,8 +5,10 @@ import android.app.Activity;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.Spinner;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 
 public class ActivityAddQuestion extends Activity {
 
@@ -14,20 +16,32 @@ public class ActivityAddQuestion extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_activity_add_question);
-		
-		Button ShowActivityDoneQuestButton = (Button) findViewById
-				(R.id.btn_done);
-		ShowActivityDoneQuestButton.setOnClickListener(new View.OnClickListener() {
-				
-			public void onClick(View view) {
-				// TODO Auto-generated method stub
-				startActivityDoneQuest();
+
+		Button ShowActivityDoneQuestButton = (Button) findViewById(R.id.btn_done);
+		ShowActivityDoneQuestButton
+				.setOnClickListener(new View.OnClickListener() {
+
+					public void onClick(View view) {
+						// TODO Auto-generated method stub
+						startActivityDoneQuest();
+					}
+				});
+
+		final LinearLayout layout = (LinearLayout) findViewById(R.id.linlayout);
+		final Button bn = (Button) findViewById(R.id.btn_add_answer);
+		bn.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				EditText etv1 = new EditText(v.getContext());
+				etv1.setText("Answer");
+				layout.addView(etv1);
 			}
 		});
+
 	}
-	
-	private void startActivityDoneQuest(){
-		Intent startTwo= new Intent(this, ActivityQuestions.class);
+
+	private void startActivityDoneQuest() {
+		Intent startTwo = new Intent(this, ActivityQuestions.class);
 		startActivity(startTwo);
 	}
 
