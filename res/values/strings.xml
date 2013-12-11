@@ -34,12 +34,14 @@
     </string-array>
     <string name="done">Done </string>
     <string name="finish">Finish</string>
+
     <string name="my_new_survey">My new survey</string>
     <string name="local">Local</string>
     <string name="global">Global</string>
     <string name="plus">+</string>
     <string name="answ1">Answer 1: </string>
     <string name="answ2">Answer 2: </string>
+
         
         
 

@@ -33,7 +33,8 @@ import com.google.gson.Gson;
 
 public class ActivityNewSurvey extends FragmentActivity implements IReactor {
 
-	//private ExchangeDataFormatter exchangeDataFormatter = new ExchangeDataFormatter();
+	// private ExchangeDataFormatter exchangeDataFormatter = new
+	// ExchangeDataFormatter();
 	private AssetsPropertyReader assetsPropertyReader = null;
 
 	private String url_survey_create = null;
@@ -63,8 +64,6 @@ public class ActivityNewSurvey extends FragmentActivity implements IReactor {
 
 					public void onClick(View view) {
 
-						
-						
 						accessWebServiceCreateSurvey();
 					}
 				});
@@ -85,21 +84,34 @@ public class ActivityNewSurvey extends FragmentActivity implements IReactor {
 		// );
 
 		Long newSurveyCreator = new Long(2);
-		String newSurveyTitle = ((EditText)findViewById(R.id.et_new_survey)).getText().toString();
-		
+		String newSurveyTitle = ((EditText) findViewById(R.id.et_new_survey))
+				.getText().toString();
+
 		RadioGroup rg_surveyType = (RadioGroup) findViewById(R.id.rg_survey_type);
-		RadioButton radioButtonSelected =  (RadioButton) this.findViewById( rg_surveyType.getCheckedRadioButtonId() );
-		
-		Survey.SURVEY_TYPE newSurveyType = ( radioButtonSelected  ==  (RadioButton) findViewById(R.id.rb_surv_type_global) ? Survey.SURVEY_TYPE.GLOBAL : Survey.SURVEY_TYPE.LOCAL );
-		String newSurveyStartTime = ((EditText)findViewById(R.id.et_start_date)).getText().toString() + " " + ((EditText)findViewById(R.id.et_start_time)).getText().toString();
-		String newSurveyEndTime = ((EditText)findViewById(R.id.et_end_date)).getText().toString() + " " + ((EditText)findViewById(R.id.et_end_time)).getText().toString();
+		RadioButton radioButtonSelected = (RadioButton) this
+				.findViewById(rg_surveyType.getCheckedRadioButtonId());
+
+		Survey.SURVEY_TYPE newSurveyType = (radioButtonSelected == (RadioButton) findViewById(R.id.rb_surv_type_global) ? Survey.SURVEY_TYPE.GLOBAL
+				: Survey.SURVEY_TYPE.LOCAL);
+		String newSurveyStartTime = ((EditText) findViewById(R.id.et_start_date))
+				.getText().toString()
+				+ " "
+				+ ((EditText) findViewById(R.id.et_start_time)).getText()
+						.toString();
+		String newSurveyEndTime = ((EditText) findViewById(R.id.et_end_date))
+				.getText().toString()
+				+ " "
+				+ ((EditText) findViewById(R.id.et_end_time)).getText()
+						.toString();
 		String newSurveyHashOrUrl = "s_hash_or_url";
-		
-		Survey newSurvey = new Survey(newSurveyCreator, newSurveyTitle, newSurveyType, newSurveyStartTime, newSurveyEndTime, newSurveyHashOrUrl);
-		
+
+		Survey newSurvey = new Survey(newSurveyCreator, newSurveyTitle,
+				newSurveyType, newSurveyStartTime, newSurveyEndTime,
+				newSurveyHashOrUrl);
+
 		jsonNewSurveyAsString = new Gson().toJson(newSurvey);
-		
-		System.out.println("jsonNewSurveyAsString: \n" + jsonNewSurveyAsString );
+
+		System.out.println("jsonNewSurveyAsString: \n" + jsonNewSurveyAsString);
 
 		Toast.makeText(getApplicationContext(), jsonNewSurveyAsString,
 				Toast.LENGTH_LONG).show();
@@ -108,7 +120,6 @@ public class ActivityNewSurvey extends FragmentActivity implements IReactor {
 
 		task.execute(new String[] { url_survey_create, jsonNewSurveyAsString });
 	}
-
 
 	public void selectStartDate(View view) {
 		DialogFragment newFragment = new SelectDateFragment(R.id.et_start_date);
@@ -190,20 +201,20 @@ public class ActivityNewSurvey extends FragmentActivity implements IReactor {
 
 	@Override
 	public void reactOnResult(String result) {
-		
+
 		// TODO: Handle result
 		JSONObject message;
 		Long newSurveyId = null;
-		
+
 		try {
 			message = new JSONObject(result);
 			JSONObject dataObject = message.getJSONObject("v_data");
-			newSurveyId = Long.parseLong( dataObject.getString("s_id") );
-			
-			if( newSurveyId == null){
+			newSurveyId = Long.parseLong(dataObject.getString("s_id"));
+
+			if (newSurveyId == null) {
 				throw new JSONException("New survey ID not received!");
 			}
-			
+
 		} catch (JSONException e) {
 			e.printStackTrace();
 			Toast.makeText(getApplicationContext(), e.getMessage(),
@@ -211,13 +222,21 @@ public class ActivityNewSurvey extends FragmentActivity implements IReactor {
 			// prevent starting new activity!
 			return;
 		}
-		
+
 		// put survey ID into shared preferences
-		Intent intent_ActivityQuestions = new Intent(this, ActivityQuestions.class);
-		intent_ActivityQuestions.putExtra("NEW_SURVEY_ID", newSurveyId );
+		Intent intent_ActivityQuestions = new Intent(this,
+				ActivityQuestions.class);
+		intent_ActivityQuestions.putExtra("NEW_SURVEY_ID", newSurveyId);
 
 		startActivity(intent_ActivityQuestions);
 	}
-	
+
+	// });
+	// }
+
+	private void startActivityCreateQuestion() {
+		Intent startTwo = new Intent(this, ActivityQuestions.class);
+		startActivity(startTwo);
+	}
 
 }
