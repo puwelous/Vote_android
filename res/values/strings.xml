@@ -41,6 +41,11 @@
     <string name="plus">+</string>
     <string name="answ1">Answer 1: </string>
     <string name="answ2">Answer 2: </string>
+    <string name="hash_code">Hash code:  </string>
+    <string name="type">Type:  </string>
+    <string name="questions">Questions: </string>
+    <string name="stop_survey">Stop Survey</string>
+    
 
         
         
