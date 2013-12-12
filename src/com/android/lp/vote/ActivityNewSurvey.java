@@ -1,9 +1,12 @@
 package com.android.lp.vote;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Properties;
+import java.util.regex.PatternSyntaxException;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -29,6 +32,7 @@ import com.android.lp.communication.IReactor;
 import com.android.lp.communication.JSONSendTask;
 import com.android.lp.helpers.AssetsPropertyReader;
 import com.android.lp.vote.models.Survey;
+import com.android.lp.vote.models.Survey.SURVEY_TYPE;
 import com.google.gson.Gson;
 
 public class ActivityNewSurvey extends FragmentActivity implements IReactor {
@@ -72,6 +76,8 @@ public class ActivityNewSurvey extends FragmentActivity implements IReactor {
 	private void accessWebServiceCreateSurvey() {
 
 		String jsonNewSurveyAsString = null;
+		String[] keyWords;
+		JSONObject clientJSONMessage = new JSONObject();
 
 		// $new_survey = array(
 		// 's_creator' => '2',
@@ -83,6 +89,7 @@ public class ActivityNewSurvey extends FragmentActivity implements IReactor {
 		// //,'usr_last_update' = $this->post('usr_last_update')
 		// );
 
+		// TODO: id of user
 		Long newSurveyCreator = new Long(2);
 		String newSurveyTitle = ((EditText) findViewById(R.id.et_new_survey))
 				.getText().toString();
@@ -109,16 +116,63 @@ public class ActivityNewSurvey extends FragmentActivity implements IReactor {
 				newSurveyType, newSurveyStartTime, newSurveyEndTime,
 				newSurveyHashOrUrl);
 
-		jsonNewSurveyAsString = new Gson().toJson(newSurvey);
+		//jsonNewSurveyAsString = new Gson().toJson(newSurvey);
+		
+		JSONObject newSurveyAsJSONObject = new JSONObject();
+		
 
-		System.out.println("jsonNewSurveyAsString: \n" + jsonNewSurveyAsString);
+		try {
 
-		Toast.makeText(getApplicationContext(), jsonNewSurveyAsString,
-				Toast.LENGTH_LONG).show();
+			newSurveyAsJSONObject.put("s_creator", newSurvey.getS_creator());
+			newSurveyAsJSONObject.put("s_title", newSurvey.getS_title());
+			newSurveyAsJSONObject.put("s_type", newSurvey.getS_type().name().toUpperCase());
+			newSurveyAsJSONObject.put("s_start_time", newSurvey.getS_start_time());
+			newSurveyAsJSONObject.put("s_end_time", newSurvey.getS_end_time());
+			newSurveyAsJSONObject.put("s_hash_or_url", newSurvey.getS_hash_or_url());
+			
+			///
+	        String jsonEmp = new Gson().toJson(newSurvey);
+	        System.out.print(jsonEmp);
+			///
+			
+			
+			System.out.println("newSurveyAsJSONObject"  + newSurveyAsJSONObject);
+			
+			//clientJSONMessage = clientJSONMessage.put("v_survey", newSurveyAsJSONObject);
+			clientJSONMessage = clientJSONMessage.put("v_survey", jsonEmp);
 
-		JSONSendTask task = new JSONSendTask(this);
+			String keyWordsFullString = ((EditText) findViewById(R.id.et_keywords))
+					.getText().toString();
 
-		task.execute(new String[] { url_survey_create, jsonNewSurveyAsString });
+			JSONArray keyWordsJSONArray = new JSONArray();
+
+			keyWords = keyWordsFullString.split("\\s+");
+			for (int i = 0; i < keyWords.length; i++) {
+				keyWordsJSONArray.put(keyWords[i]);
+			}
+
+			System.out.println("Putting keyword:" + Arrays.deepToString(keyWords));
+			clientJSONMessage = clientJSONMessage.put("v_keywords", keyWordsJSONArray);
+			
+			JSONSendTask task = new JSONSendTask(this);
+
+			//System.out.println("by new Gson() " + new Gson().toJson(clientJSONMessage));
+			System.out.println("by toString() " + clientJSONMessage.toString() );
+			
+			//task.execute(new String[] { url_survey_create, jsonNewSurveyAsString });
+			task.execute(new String[] { url_survey_create, clientJSONMessage.toString() } );
+
+		} catch (PatternSyntaxException ex) {
+			// ignore keywords
+			ex.printStackTrace();
+			Toast.makeText(getApplicationContext(),
+					"PatternSyntaxException " + ex.getMessage(), Toast.LENGTH_LONG).show();			
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			Toast.makeText(getApplicationContext(),
+					"JSONException " + e.getMessage(), Toast.LENGTH_LONG).show();
+		}
 	}
 
 	public void selectStartDate(View view) {
@@ -219,6 +273,10 @@ public class ActivityNewSurvey extends FragmentActivity implements IReactor {
 			e.printStackTrace();
 			Toast.makeText(getApplicationContext(), e.getMessage(),
 					Toast.LENGTH_LONG).show();
+			Toast.makeText(getApplicationContext(), "Result: " + result,
+					Toast.LENGTH_LONG).show();	
+			System.err.println(e.getMessage());
+			System.err.println("Result: " + result);
 			// prevent starting new activity!
 			return;
 		}
@@ -230,13 +288,4 @@ public class ActivityNewSurvey extends FragmentActivity implements IReactor {
 
 		startActivity(intent_ActivityQuestions);
 	}
-
-	// });
-	// }
-
-	private void startActivityCreateQuestion() {
-		Intent startTwo = new Intent(this, ActivityQuestions.class);
-		startActivity(startTwo);
-	}
-
 }
