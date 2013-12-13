@@ -68,6 +68,12 @@
             android:name="com.android.lp.vote.FillingSurvey"
             android:label="@string/title_activity_filling_survey" >
         </activity>
+		
+		<activity
+		    android:name="com.android.lp.vote.DetailSurveyView"
+            android:label="LA" >
+        </activity>        
+
     </application>
 
 </manifest>

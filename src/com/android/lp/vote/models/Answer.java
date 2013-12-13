@@ -1,10 +1,18 @@
 package com.android.lp.vote.models;
 
-public class Answer {
+import java.io.Serializable;
+
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Answer implements Serializable {
 	
-	private Long a_id;
-	private Long a_question;
-	private String a_answer;
+	private static final long serialVersionUID = 1L;
+	
+	
+	private Long a_id = Long.valueOf(-1);
+	private Long a_question = Long.valueOf(-1);
+	private String a_answer = new String();
 	
 	public Answer( Long a_question, String a_answer) {
 		super();
@@ -43,12 +51,52 @@ public class Answer {
 		this.a_answer = a_answer;
 	}
 
-	@Override
-	public String toString() {
+	public String toFullString() {
 		return "Answer [a_id=" + a_id + ", a_question=" + a_question
 				+ ", a_answer=" + a_answer + "]";
 	}
 	
-	
-
+	@Override
+	public String toString() {
+		return a_answer;
+	}	
+//	
+//	@Override
+//	public int describeContents() {
+//		// TODO Auto-generated method stub
+//		return 0;
+//	}
+//
+//	@Override
+//	public void writeToParcel(Parcel dest, int flags) {
+//
+////		private Long a_id;
+////		private Long a_question;
+////		private String a_answer;
+//		
+//		dest.writeLong(this.a_id);
+//		dest.writeLong(this.a_question);
+//		dest.writeString(this.a_answer);
+//	}
+//	
+//	public Answer(Parcel in) {
+//
+//		this.a_id = in.readLong();
+//		this.a_question = in.readLong();
+//		this.a_answer = in.readString();
+//	}	
+//
+//	// More boilerplate
+//	// Failure to add this results in the following exception
+//	// "android.os.BadParcelableException: Parcelable protocol
+//	// requires a Parcelable.Creator object called CREATOR on class"
+//	public static final Parcelable.Creator<Answer> CREATOR = new Parcelable.Creator<Answer>() {
+//		public Answer createFromParcel(Parcel in) {
+//			return new Answer(in);
+//		}
+//
+//		public Answer[] newArray(int size) {
+//			return new Answer[size];
+//		}
+//	};	
 }

@@ -1,4 +1,4 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,34 +8,25 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
     tools:context=".ActivityQuestions" >
 
     <Button
         android:id="@+id/btn_AddQuest"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="26dp"
         android:text="@string/addQuest" />
 
     <TextView
-        android:id="@+id/tv_question"
+        android:id="@+id/tv_questionsss"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/btn_AddQuest"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="54dp"
-        android:text="List of all questions created, if none is created, then empty"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <Button
-        android:id="@+id/btn_finish"
-        android:layout_width="wrap_content"
+        android:id="@+id/btn_activity_questions_create"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:text="@string/finish" />
+        android:text="@string/btn_create_questions" />
 
-</RelativeLayout>
+</LinearLayout>

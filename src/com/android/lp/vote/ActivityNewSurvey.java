@@ -37,6 +37,8 @@ import com.google.gson.Gson;
 
 public class ActivityNewSurvey extends FragmentActivity implements IReactor {
 
+	
+	public static final int GET_CODE = 1;
 	// private ExchangeDataFormatter exchangeDataFormatter = new
 	// ExchangeDataFormatter();
 	private AssetsPropertyReader assetsPropertyReader = null;
@@ -78,16 +80,6 @@ public class ActivityNewSurvey extends FragmentActivity implements IReactor {
 		String jsonNewSurveyAsString = null;
 		String[] keyWords;
 		JSONObject clientJSONMessage = new JSONObject();
-
-		// $new_survey = array(
-		// 's_creator' => '2',
-		// 's_title' => 'Dynamicly created survey',
-		// 's_type' => '0',
-		// 's_start_time' => '2013-12-01 15:00:00',
-		// 's_end_time' => '2013-12-25 15:00:00',
-		// 's_hash_or_url' => '/basic/url'
-		// //,'usr_last_update' = $this->post('usr_last_update')
-		// );
 
 		// TODO: id of user
 		Long newSurveyCreator = new Long(2);
@@ -286,6 +278,16 @@ public class ActivityNewSurvey extends FragmentActivity implements IReactor {
 				ActivityQuestions.class);
 		intent_ActivityQuestions.putExtra("NEW_SURVEY_ID", newSurveyId);
 
-		startActivity(intent_ActivityQuestions);
+		startActivityForResult(intent_ActivityQuestions, GET_CODE);
 	}
+	
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+				
+		if (requestCode == GET_CODE && resultCode == RESULT_OK) {
+			//String activityResult = data.getStringExtra("COLOR");
+			//tv.setText(activityResult);
+			Toast.makeText(getApplicationContext(), "SerializableData: SoFarNothing", //+ data.getSerializableExtra(name),
+					Toast.LENGTH_LONG).show();				
+		}
+	}	
 }
