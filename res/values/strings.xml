@@ -28,14 +28,15 @@
     <string name="title_activity_activity_add_question">ActivityAddQuestion</string>
     <string name="quest">Question: </string>
     <string name="questionType">Type: </string>
+
     <string-array name="question_type_options">
         <item>Single choice</item>
         <item>Multiple choice</item>
         <item>Raw answer</item>
     </string-array>
+
     <string name="done">Done </string>
     <string name="finish">Finish</string>
-
     <string name="my_new_survey">My new survey</string>
     <string name="local">Local</string>
     <string name="global">Global</string>
@@ -51,9 +52,6 @@
     <string name="example_answer_young">Under 18</string>
     <string name="example_answer_older">18+</string>
     <string name="btn_create_questions">Create questions</string>
-    
-
-        
-        
+    <string name="title_activity_activity_surveys_by_keywords">ActivitySurveysByKeywords</string>
 
 </resources>

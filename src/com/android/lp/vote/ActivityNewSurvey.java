@@ -70,17 +70,22 @@ public class ActivityNewSurvey extends FragmentActivity implements IReactor {
 
 					public void onClick(View view) {
 
-						accessWebServiceCreateSurvey();
+						Survey newSurvey = createSurveyFromInput();
+						
+						if( !newSurvey.validate() ){
+							Toast.makeText(getApplicationContext(), "Wrong input!",
+									Toast.LENGTH_LONG).show();
+							return;
+						}
+						
+						
+						accessWebServiceCreateSurvey(newSurvey);
 					}
 				});
 	}
-
-	private void accessWebServiceCreateSurvey() {
-
-		String jsonNewSurveyAsString = null;
-		String[] keyWords;
-		JSONObject clientJSONMessage = new JSONObject();
-
+	
+	private Survey createSurveyFromInput(){
+		
 		// TODO: id of user
 		Long newSurveyCreator = new Long(2);
 		String newSurveyTitle = ((EditText) findViewById(R.id.et_new_survey))
@@ -104,9 +109,15 @@ public class ActivityNewSurvey extends FragmentActivity implements IReactor {
 						.toString();
 		String newSurveyHashOrUrl = "s_hash_or_url";
 
-		Survey newSurvey = new Survey(newSurveyCreator, newSurveyTitle,
+		return new Survey(newSurveyCreator, newSurveyTitle,
 				newSurveyType, newSurveyStartTime, newSurveyEndTime,
-				newSurveyHashOrUrl);
+				newSurveyHashOrUrl);		
+	}
+
+	private void accessWebServiceCreateSurvey(Survey newSurvey) {
+
+		String[] keyWords;
+		JSONObject clientJSONMessage = new JSONObject();
 
 		//jsonNewSurveyAsString = new Gson().toJson(newSurvey);
 		
@@ -136,15 +147,20 @@ public class ActivityNewSurvey extends FragmentActivity implements IReactor {
 			String keyWordsFullString = ((EditText) findViewById(R.id.et_keywords))
 					.getText().toString();
 
-			JSONArray keyWordsJSONArray = new JSONArray();
-
+			//try to parse keywords
 			keyWords = keyWordsFullString.split("\\s+");
-			for (int i = 0; i < keyWords.length; i++) {
-				keyWordsJSONArray.put(keyWords[i]);
+			
+			if( keyWords.length >= 0 ){
+				JSONArray keyWordsJSONArray = new JSONArray();
+				
+				for (int i = 0; i < keyWords.length; i++) {
+					keyWordsJSONArray.put(keyWords[i]);
+				}
+				
+				System.out.println("Putting keyword:" + Arrays.deepToString(keyWords));
+				
+				clientJSONMessage = clientJSONMessage.put("v_keywords", keyWordsJSONArray);
 			}
-
-			System.out.println("Putting keyword:" + Arrays.deepToString(keyWords));
-			clientJSONMessage = clientJSONMessage.put("v_keywords", keyWordsJSONArray);
 			
 			JSONSendTask task = new JSONSendTask(this);
 
@@ -254,10 +270,35 @@ public class ActivityNewSurvey extends FragmentActivity implements IReactor {
 
 		try {
 			message = new JSONObject(result);
+			
+			String v_status = message.getString("v_status");
+			if( v_status.equalsIgnoreCase("BAD")){
+				
+				try{
+					String v_message = message.getString("v_message");
+					System.out.println(v_message);
+					Toast.makeText(getApplicationContext(), v_message,
+							Toast.LENGTH_LONG).show();
+					Toast.makeText(getApplicationContext(), "Survey not created!",
+							Toast.LENGTH_LONG).show();
+					// prevent starting new activity!
+					return;
+				}catch(Exception ee){
+					System.out.println(ee.getMessage());
+					Toast.makeText(getApplicationContext(), ee.getMessage(),
+							Toast.LENGTH_LONG).show();
+					Toast.makeText(getApplicationContext(), "Survey not created!",
+							Toast.LENGTH_LONG).show();
+					// prevent starting new activity!
+					return;
+				}			
+				
+			}
+			
 			JSONObject dataObject = message.getJSONObject("v_data");
 			newSurveyId = Long.parseLong(dataObject.getString("s_id"));
 
-			if (newSurveyId == null) {
+			if (newSurveyId == null ) {
 				throw new JSONException("New survey ID not received!");
 			}
 
@@ -265,8 +306,8 @@ public class ActivityNewSurvey extends FragmentActivity implements IReactor {
 			e.printStackTrace();
 			Toast.makeText(getApplicationContext(), e.getMessage(),
 					Toast.LENGTH_LONG).show();
-			Toast.makeText(getApplicationContext(), "Result: " + result,
-					Toast.LENGTH_LONG).show();	
+//			Toast.makeText(getApplicationContext(), "Result: " + result,
+//					Toast.LENGTH_LONG).show();	
 			System.err.println(e.getMessage());
 			System.err.println("Result: " + result);
 			// prevent starting new activity!
