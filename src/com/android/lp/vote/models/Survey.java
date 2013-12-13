@@ -3,6 +3,7 @@ package com.android.lp.vote.models;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 
+import android.annotation.SuppressLint;
 import android.net.ParseException;
 
 public class Survey implements Serializable {
@@ -113,6 +114,7 @@ public class Survey implements Serializable {
 		GLOBAL, LOCAL
 	}
 
+	@SuppressLint("SimpleDateFormat")
 	public boolean validate() {
 
 		if (this.s_creator == null)
@@ -122,18 +124,31 @@ public class Survey implements Serializable {
 		if (s_type == null)
 			return false;
 
-		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-		format.setLenient(false);
+		SimpleDateFormat formater = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+		formater.setLenient(false);
 
+		java.util.Date startDate;
+		java.util.Date endDate;
+		
 		try {
-			format.parse(this.s_start_time);
-			format.parse(this.s_end_time);
+			startDate = formater.parse(this.s_start_time);
+			endDate = formater.parse(this.s_end_time);
+			
+			//System.out.println("Date1 is after Date2");
+        	if(startDate.compareTo(endDate)>0){
+        		return false;
+        	}
+        		
 		} catch (ParseException e) {
 			try{
-				format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-				format.setLenient(false);
-				format.parse(this.s_start_time);
-				format.parse(this.s_end_time);				
+				formater = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+				formater.setLenient(false);
+				startDate = formater.parse(this.s_start_time);
+				endDate = formater.parse(this.s_end_time);
+				
+	        	if(startDate.compareTo(endDate)>0){
+	        		return false;
+	        	}				
 			}catch (ParseException pe) {
 				return false;
 			} catch (Exception pe) {

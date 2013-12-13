@@ -27,12 +27,20 @@
     <string name="addQuest">Add Question </string>
     <string name="title_activity_activity_add_question">ActivityAddQuestion</string>
     <string name="quest">Question: </string>
+
+    <string name="answType">Answer Type: </string>
+
+    <string-array name="answ_opt">
+        <item>Radio button </item>
+        <item>Checkbox</item>
+	</string-array>
     <string name="questionType">Type: </string>
 
     <string-array name="question_type_options">
         <item>Single choice</item>
         <item>Multiple choice</item>
         <item>Raw answer</item>
+
     </string-array>
 
     <string name="done">Done </string>
@@ -47,11 +55,20 @@
     <string name="type">Type:  </string>
     <string name="questions">Questions: </string>
     <string name="stop_survey">Stop Survey</string>
+
+    <string name="title_activity_show_all_survays">ShowAllSurvays</string>
+    <string name="title_activity_show_by_hash_code">ShowByHashCode</string>
+    <string name="title_activity_show_by_keyword">ShowByKeyword</string>
+    <string name="title_activity_filling_survey">FillingSurvey</string>
+    <string name="info_full">Task of the "Vote Application" - create voting application, in which users can create their own survey, fill surveys that are created by others and see results on there survey, after it is finished.</string>
+    <string name="about_full">Pavol Dano, Liene Bērze</string> 
+
     <string name="creator_id">Creator ID:</string>
     <string name="example_question">How old are you?</string>
     <string name="example_answer_young">Under 18</string>
     <string name="example_answer_older">18+</string>
     <string name="btn_create_questions">Create questions</string>
     <string name="title_activity_activity_surveys_by_keywords">ActivitySurveysByKeywords</string>
+    <string name="go_back">Go back</string>
 
 </resources>
