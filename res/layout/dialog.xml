@@ -34,7 +34,7 @@
          android:orientation="horizontal" >
 
          <EditText
-             android:id="@+id/et_keywords"
+             android:id="@+id/main_dialog_et_keywords"
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
              android:layout_weight="0.79"
@@ -43,7 +43,7 @@
          </EditText>
 
          <Button
-             android:id="@+id/btn_search_by_keyword"
+             android:id="@+id/main_dialog_btn_search_by_keyword"
              style="?android:attr/buttonStyleSmall"
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"

@@ -70,5 +70,6 @@
     <string name="btn_create_questions">Create questions</string>
     <string name="title_activity_activity_surveys_by_keywords">ActivitySurveysByKeywords</string>
     <string name="go_back">Go back</string>
+    <string name="tv_surves_found">Surveys found:</string>
 
 </resources>

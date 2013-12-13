@@ -13,6 +13,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -35,9 +36,11 @@ public class ActivityMySurvey extends Activity implements IReactor {
 
 	private AssetsPropertyReader assetsPropertyReader = null;
 
-	// private String jsonResult;
 	private String url = "";
 	private ListView listView;
+	
+	private ProgressDialog pDialog;
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -170,7 +173,8 @@ public class ActivityMySurvey extends Activity implements IReactor {
 	}
 
 	@Override
-	public void reactOnResult(String result) {
+	public void onPostExecute(String result) {
+		pDialog.dismiss();
 		ListDrawer(result);
 	}
 	
@@ -205,6 +209,15 @@ public class ActivityMySurvey extends Activity implements IReactor {
 			Toast.makeText(getApplicationContext(), "SerializableData: SoFarNothing", //+ data.getSerializableExtra(name),
 					Toast.LENGTH_LONG).show();				
 		}
+	}
+
+	@Override
+	public void onPreExecute() {
+		pDialog = new ProgressDialog(ActivityMySurvey.this);
+		pDialog.setMessage("...loading your surveys...");
+		pDialog.setIndeterminate(false);
+	    pDialog.setCancelable(true);
+	    pDialog.show();
 	}	
 
 }

@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -9,8 +10,19 @@
     tools:context=".ShowByKeyword" >
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/act_shw_by_kwrd_tv_surveys_found"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        android:text="@string/tv_surves_found"
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <ListView
+        android:id="@+id/act_show_by_kwrds_mySurveysListView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/act_shw_by_kwrd_tv_surveys_found"
+        android:layout_centerHorizontal="true" >
+    </ListView>
 
 </RelativeLayout>

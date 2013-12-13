@@ -21,6 +21,7 @@ import com.android.lp.vote.models.Question;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
@@ -39,6 +40,8 @@ public class ActivityQuestions extends Activity implements IReactor{
 	private List<Question> surveyQuestions = new ArrayList<Question>();
 
 	private String urlQuestionsAnswersCreate;
+	
+	private ProgressDialog pDialog;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -152,12 +155,11 @@ public class ActivityQuestions extends Activity implements IReactor{
 			return;
 		}
 	}
-	
-
-
 
 	@Override
-	public void reactOnResult(String result) {
+	public void onPostExecute(String result) {
+		
+		pDialog.dismiss();
 		
 		// TODO: Handle result
 		try {
@@ -187,5 +189,14 @@ public class ActivityQuestions extends Activity implements IReactor{
 			return;
 		}
 		
-	}	
+	}
+
+	@Override
+	public void onPreExecute() {
+		pDialog = new ProgressDialog(ActivityQuestions.this);
+		pDialog.setMessage("...creating survey data...");
+		pDialog.setIndeterminate(false);
+	    pDialog.setCancelable(true);
+	    pDialog.show();
+	}		
 }

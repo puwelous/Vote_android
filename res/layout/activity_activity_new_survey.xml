@@ -191,7 +191,7 @@
             android:text="@string/keywords" />
 
         <EditText
-            android:id="@+id/et_keywords"
+            android:id="@+id/main_dialog_et_keywords"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textCapWords" />

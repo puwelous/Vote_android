@@ -12,6 +12,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -33,6 +34,8 @@ public class ShowAllSurveys extends Activity implements IReactor {
 	// private String jsonResult;
 	private String url = "";
 	private ListView listView;
+	
+	private ProgressDialog pDialog;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -108,8 +111,18 @@ public class ShowAllSurveys extends Activity implements IReactor {
 	}
 
 	@Override
-	public void reactOnResult(String result) {
+	public void onPostExecute(String result) {
+		pDialog.dismiss();		
 		ListDrawer(result);
 	}
+
+	@Override
+	public void onPreExecute() {
+		pDialog = new ProgressDialog(ShowAllSurveys.this);
+		pDialog.setMessage("...loading all surveys...");
+		pDialog.setIndeterminate(false);
+	    pDialog.setCancelable(true);
+	    pDialog.show();
+	}	
 
 }

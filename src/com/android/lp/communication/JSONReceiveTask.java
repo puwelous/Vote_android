@@ -66,10 +66,17 @@ public class JSONReceiveTask extends AsyncTask<String, Void, String> {
 		}
 		return answer;
 	}
+	
+	@Override
+	protected void onPreExecute() {
+		super.onPreExecute();
+		resultHandler.onPreExecute();
+	}	
 
 	@Override
 	protected void onPostExecute(String result) {
-		resultHandler.reactOnResult(result);
+		super.onPreExecute();
+		resultHandler.onPostExecute(result);
 	}
 	
 }// end async task

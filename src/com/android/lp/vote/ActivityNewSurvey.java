@@ -12,6 +12,7 @@ import org.json.JSONObject;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -44,6 +45,8 @@ public class ActivityNewSurvey extends FragmentActivity implements IReactor {
 	private AssetsPropertyReader assetsPropertyReader = null;
 
 	private String url_survey_create = null;
+	
+	private ProgressDialog pDialog;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -144,7 +147,7 @@ public class ActivityNewSurvey extends FragmentActivity implements IReactor {
 			//clientJSONMessage = clientJSONMessage.put("v_survey", newSurveyAsJSONObject);
 			clientJSONMessage = clientJSONMessage.put("v_survey", jsonEmp);
 
-			String keyWordsFullString = ((EditText) findViewById(R.id.et_keywords))
+			String keyWordsFullString = ((EditText) findViewById(R.id.main_dialog_et_keywords))
 					.getText().toString();
 
 			//try to parse keywords
@@ -262,8 +265,10 @@ public class ActivityNewSurvey extends FragmentActivity implements IReactor {
 	}
 
 	@Override
-	public void reactOnResult(String result) {
+	public void onPostExecute(String result) {
 
+		pDialog.dismiss();
+		
 		// TODO: Handle result
 		JSONObject message;
 		Long newSurveyId = null;
@@ -330,5 +335,14 @@ public class ActivityNewSurvey extends FragmentActivity implements IReactor {
 			Toast.makeText(getApplicationContext(), "SerializableData: SoFarNothing", //+ data.getSerializableExtra(name),
 					Toast.LENGTH_LONG).show();				
 		}
+	}
+
+	@Override
+	public void onPreExecute() {
+		pDialog = new ProgressDialog(ActivityNewSurvey.this);
+		pDialog.setMessage("...creating new survey...");
+		pDialog.setIndeterminate(false);
+	    pDialog.setCancelable(true);
+	    pDialog.show();
 	}	
 }

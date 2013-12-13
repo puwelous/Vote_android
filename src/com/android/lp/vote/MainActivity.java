@@ -63,8 +63,8 @@ public class MainActivity extends Activity {
                 custom.setContentView(R.layout.dialog);
                 et_hash_code = (EditText)custom.findViewById(R.id.et_hash_code);
                 btn_search_by_hc = (Button)custom.findViewById(R.id.btn_search_by_hc);
-                et_keywords = (EditText)custom.findViewById(R.id.et_keywords);
-                btn_search_by_keyword = (Button)custom.findViewById(R.id.btn_search_by_keyword);
+                et_keywords = (EditText)custom.findViewById(R.id.main_dialog_et_keywords);
+                btn_search_by_keyword = (Button)custom.findViewById(R.id.main_dialog_btn_search_by_keyword);
                 btn_showall = (Button)custom.findViewById(R.id.btn_showall);
                 btn_cancel = (Button)custom.findViewById(R.id.btn_cancel);
           
@@ -123,13 +123,22 @@ public class MainActivity extends Activity {
 	}
     
     private void startActivityShowHashCodeSurveys() {
-    	Intent startTwo = new Intent(this, ShowByHashCode.class);
-    	startActivity(startTwo);
+    	Intent activityShowByHashCode = new Intent(this, ShowByHashCode.class);
+    	startActivity(activityShowByHashCode);
     }
     
     private void startActivityShowKeywordSurveys() {
-    	Intent startTwo = new Intent(this, ShowByKeyword.class);
-    	startActivity(startTwo);
+    	
+    	String keywordsInput = (String) et_keywords.getText().toString();
+    	
+    	// validate input
+    	//...    	
+    	
+    	Intent activityShowByKeywords = new Intent(this, ShowByKeyword.class);
+    	activityShowByKeywords.putExtra("KEYWORDS_INPUT", keywordsInput);
+    	
+    	// start activity
+    	startActivity(activityShowByKeywords);
     }
 
 	@Override

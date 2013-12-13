@@ -82,7 +82,8 @@ public class JSONSendTask extends AsyncTask<String, Void, String> {
 
 	@Override
 	protected void onPostExecute(String result) {
-		resultHandler.reactOnResult(result);
+		super.onPostExecute(result);
+		resultHandler.onPostExecute(result);
 	}
 	
 }// end async task
