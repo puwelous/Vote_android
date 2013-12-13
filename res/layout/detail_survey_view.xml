@@ -21,8 +21,23 @@
                 android:layout_gravity="center_horizontal"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
-        
-        
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/TextView01"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/creator_id"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                <TextView
+                    android:id="@+id/tv_real_creator_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+            </LinearLayout>
 
            	 <LinearLayout
                 android:layout_width="match_parent"
@@ -162,18 +177,19 @@
 			
 				<LinearLayout
 				    android:layout_width="match_parent"
-				    android:layout_height="wrap_content" >
+				    android:layout_height="wrap_content"
+				    android:orientation="vertical" >
 
 					<Button
 					    android:id="@+id/btn_show_questions"
-					    android:layout_width="wrap_content"
+					    android:layout_width="match_parent"
 					    android:layout_height="wrap_content"
 					    android:text="@string/questions" />
 
 					<ExpandableListView
 					    android:id="@+id/ListView"
 					    android:layout_width="match_parent"
-					    android:layout_height="wrap_content"
+					    android:layout_height="0dp"
 					    android:layout_weight="1"
 					    android:visibility="invisible" >
 					</ExpandableListView>
@@ -185,6 +201,13 @@
 					    android:layout_width="wrap_content"
 					    android:layout_height="wrap_content"
 					    android:text="@string/stop_survey" />
+
+				<Button
+				    android:id="@+id/btn_go_back"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:text="Button" />
+
     </LinearLayout>
 
 </ScrollView>

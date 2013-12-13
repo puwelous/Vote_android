@@ -51,6 +51,10 @@
             android:name="com.android.lp.vote.ActivityAddQuestion"
             android:label="@string/title_activity_activity_add_question" >
         </activity>
+        <activity
+            android:name="com.android.lp.vote.DetailSurveyView"
+            android:label="LA" >
+        </activity>        
     </application>
 
 </manifest>

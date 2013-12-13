@@ -1,6 +1,8 @@
 package com.android.lp.vote.models;
 
-public class Survey {
+import java.io.Serializable;
+
+public class Survey implements Serializable {
 
 	private Long s_id;
 	private Long s_creator;
@@ -34,13 +36,17 @@ public class Survey {
 		this.s_hash_or_url = s_hash_or_url;
 	}
 	
-	@Override
-	public String toString() {
+	public String toFullString() {
 		return "Survey [s_id=" + s_id + ", s_creator=" + s_creator
 				+ ", s_title=" + s_title + ", s_type=" + s_type
 				+ ", s_start_time=" + s_start_time + ", s_end_time="
 				+ s_end_time + ", s_hash_or_url=" + s_hash_or_url + "]";
 	}
+	
+	@Override
+	public String toString() {
+		return s_title;
+	}	
 	
 	public Long getS_creator() {
 		return s_creator;
