@@ -13,178 +13,164 @@
         android:layout_height="30dp"
         android:orientation="vertical" >
 
+        <TextView
+            android:id="@+id/tv_surveys_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
 
             <TextView
-                android:id="@+id/tv_surveys_name"
+                android:id="@+id/tv_hash_code"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
+                android:text="@string/hash_code"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
-        
-        
+            <TextView
+                android:id="@+id/tv_real_hash_code"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+        </LinearLayout>
 
-           	 <LinearLayout
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/tv_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/type"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <TextView
+                android:id="@+id/tv_real_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/tv_start_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/startd"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <TextView
+                android:id="@+id/tv_real_start_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/tv_end_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/endd"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <TextView
+                android:id="@+id/tv_real_end_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/tv_start_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/startt"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <TextView
+                android:id="@+id/tv_real_start_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/tv_end_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/endt"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <TextView
+                android:id="@+id/tv_real_end_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/tv_keywords"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/keywords"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <TextView
+                android:id="@+id/tv_real_keywords"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <Button
+                android:id="@+id/btn_show_questions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/questions" />
+
+            <ExpandableListView
+                android:id="@+id/ListView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:visibility="invisible" >
+            </ExpandableListView>
+        </LinearLayout>
 
-                <TextView
-                    android:id="@+id/tv_hash_code"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/hash_code"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
-
-                <TextView
-                    android:id="@+id/tv_real_hash_code"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
-
-           	 </LinearLayout>
-
-
-				<LinearLayout
-				    android:layout_width="match_parent"
-				    android:layout_height="wrap_content" >
-
-					<TextView
-					    android:id="@+id/tv_type"
-					    android:layout_width="wrap_content"
-					    android:layout_height="wrap_content"
-					    android:text="@string/type"
-					    android:textAppearance="?android:attr/textAppearanceMedium" />
-
-					<TextView
-					    android:id="@+id/tv_real_type"
-					    android:layout_width="wrap_content"
-					    android:layout_height="wrap_content"
-					    android:textAppearance="?android:attr/textAppearanceMedium" />
-
-				</LinearLayout>
-			
-
-				<LinearLayout
-				    android:layout_width="match_parent"
-				    android:layout_height="wrap_content" >
-
-					<TextView
-					    android:id="@+id/tv_start_date"
-					    android:layout_width="wrap_content"
-					    android:layout_height="wrap_content"
-					    android:text="@string/startd"
-					    android:textAppearance="?android:attr/textAppearanceMedium" />
-
-					<TextView
-					    android:id="@+id/tv_real_start_date"
-					    android:layout_width="wrap_content"
-					    android:layout_height="wrap_content"
-					    android:textAppearance="?android:attr/textAppearanceMedium" />
-
-				</LinearLayout>
-			
-
-				<LinearLayout
-				    android:layout_width="match_parent"
-				    android:layout_height="wrap_content" >
-
-					<TextView
-					    android:id="@+id/tv_end_date"
-					    android:layout_width="wrap_content"
-					    android:layout_height="wrap_content"
-					    android:text="@string/endd"
-					    android:textAppearance="?android:attr/textAppearanceMedium" />
-
-					<TextView
-					    android:id="@+id/tv_real_end_date"
-					    android:layout_width="wrap_content"
-					    android:layout_height="wrap_content"
-					    android:textAppearance="?android:attr/textAppearanceMedium" />
-
-				</LinearLayout>
-				
-				<LinearLayout
-				    android:layout_width="match_parent"
-				    android:layout_height="wrap_content" >
-
-					<TextView
-					    android:id="@+id/tv_start_time"
-					    android:layout_width="wrap_content"
-					    android:layout_height="wrap_content"
-					    android:text="@string/startt"
-					    android:textAppearance="?android:attr/textAppearanceMedium" />
-
-					<TextView
-					    android:id="@+id/tv_real_start_time"
-					    android:layout_width="wrap_content"
-					    android:layout_height="wrap_content"
-					    android:textAppearance="?android:attr/textAppearanceMedium" />
-
-				</LinearLayout>
-				
-				<LinearLayout
-				    android:layout_width="match_parent"
-				    android:layout_height="wrap_content" >
-
-					<TextView
-					    android:id="@+id/tv_end_time"
-					    android:layout_width="wrap_content"
-					    android:layout_height="wrap_content"
-					    android:text="@string/endt"
-					    android:textAppearance="?android:attr/textAppearanceMedium" />
-
-					<TextView
-					    android:id="@+id/tv_real_end_time"
-					    android:layout_width="wrap_content"
-					    android:layout_height="wrap_content"
-					    android:textAppearance="?android:attr/textAppearanceMedium" />
-
-				</LinearLayout>
-				
-				<LinearLayout
-				    android:layout_width="match_parent"
-				    android:layout_height="wrap_content" >
-
-					<TextView
-					    android:id="@+id/tv_keywords"
-					    android:layout_width="wrap_content"
-					    android:layout_height="wrap_content"
-					    android:text="@string/keywords"
-					    android:textAppearance="?android:attr/textAppearanceMedium" />
-
-					<TextView
-					    android:id="@+id/tv_real_keywords"
-					    android:layout_width="wrap_content"
-					    android:layout_height="wrap_content"
-					    android:textAppearance="?android:attr/textAppearanceMedium" />
-
-				</LinearLayout>
-			
-				<LinearLayout
-				    android:layout_width="match_parent"
-				    android:layout_height="wrap_content" >
-
-					<Button
-					    android:id="@+id/btn_show_questions"
-					    android:layout_width="wrap_content"
-					    android:layout_height="wrap_content"
-					    android:text="@string/questions" />
-
-					<ExpandableListView
-					    android:id="@+id/ListView"
-					    android:layout_width="match_parent"
-					    android:layout_height="wrap_content"
-					    android:layout_weight="1"
-					    android:visibility="invisible" >
-					</ExpandableListView>
-					
-				</LinearLayout>
-				
-				<Button
-					    android:id="@+id/btn_stop_survey"
-					    android:layout_width="wrap_content"
-					    android:layout_height="wrap_content"
-					    android:text="@string/stop_survey" />
+        <Button
+            android:id="@+id/btn_stop_survey"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.18"
+            android:text="@string/stop_survey" />
     </LinearLayout>
 
 </ScrollView>

@@ -7,6 +7,7 @@
     <uses-sdk
         android:minSdkVersion="8"
         android:targetSdkVersion="18" />
+
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -50,6 +51,22 @@
         <activity
             android:name="com.android.lp.vote.ActivityAddQuestion"
             android:label="@string/title_activity_activity_add_question" >
+        </activity>
+        <activity
+            android:name="com.android.lp.vote.ShowAllSurveys"
+            android:label="@string/title_activity_show_all_survays" >
+        </activity>
+        <activity
+            android:name="com.android.lp.vote.ShowByHashCode"
+            android:label="@string/title_activity_show_by_hash_code" >
+        </activity>
+        <activity
+            android:name="com.android.lp.vote.ShowByKeyword"
+            android:label="@string/title_activity_show_by_keyword" >
+        </activity>
+        <activity
+            android:name="com.android.lp.vote.FillingSurvey"
+            android:label="@string/title_activity_filling_survey" >
         </activity>
     </application>
 
