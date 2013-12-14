@@ -68,15 +68,22 @@
             android:name="com.android.lp.vote.FillingSurvey"
             android:label="@string/title_activity_filling_survey" >
         </activity>
-		
-		<activity
-		    android:name="com.android.lp.vote.DetailSurveyView"
+        <activity
+            android:name="com.android.lp.vote.ADetailSurveyView"
             android:label="LA" >
         </activity>
         <activity
             android:name="com.android.lp.vote.ActivitySurveysByKeywords"
             android:label="@string/title_activity_activity_surveys_by_keywords" >
         </activity>
+        <activity
+            android:name="org.achartengine.GraphicalActivity"
+            android:label="@string/title_activity_activity_surveys_by_keywords" >
+        </activity>        
+        <!--activity
+            android:name="com.android.lp.vote.Stats"
+            android:label="@string/title_activity_stats" >
+        </activity-->
     </application>
 
 </manifest>

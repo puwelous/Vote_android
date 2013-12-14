@@ -268,8 +268,7 @@ public class ActivityNewSurvey extends FragmentActivity implements IReactor {
 	public void onPostExecute(String result) {
 
 		pDialog.dismiss();
-		
-		// TODO: Handle result
+
 		JSONObject message;
 		Long newSurveyId = null;
 

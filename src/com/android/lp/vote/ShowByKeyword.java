@@ -101,8 +101,8 @@ public class ShowByKeyword extends Activity implements IReactor{
 		dynamicUrl.append("&format=json");
 
 		System.out.println(dynamicUrl.toString());
-		Toast.makeText(getApplicationContext(), dynamicUrl.toString(),
-				Toast.LENGTH_SHORT).show();
+//		Toast.makeText(getApplicationContext(), dynamicUrl.toString(),
+//				Toast.LENGTH_SHORT).show();
 
 		JSONReceiveTask task = new JSONReceiveTask(this);
 		task.execute(new String[] { dynamicUrl.toString() });
@@ -209,7 +209,7 @@ public class ShowByKeyword extends Activity implements IReactor{
 		// put survey ID into shared preferences
 		
 		Intent detailSurveyIntent = new Intent(this,
-				DetailSurveyView.class);
+				ADetailSurveyView.class);
 //		intent_ActivityQuestions.putExtra("NEW_SURVEY_ID", survey.getS_id());
 
 //		startActivityForResult(intent_ActivityQuestions, GET_CODE);		

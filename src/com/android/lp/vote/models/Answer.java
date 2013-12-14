@@ -2,7 +2,7 @@ package com.android.lp.vote.models;
 
 import java.io.Serializable;
 
-public class Answer implements Serializable {
+public class Answer implements Serializable, Comparable<Answer> {
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -96,4 +96,15 @@ public class Answer implements Serializable {
 //			return new Answer[size];
 //		}
 //	};	
+
+	@Override
+	public int compareTo(Answer another) {
+
+		if( this.getA_id() < another.getA_id())
+			return -1;
+		else if ( this.getA_id() > another.getA_id() )
+			return 1;
+		else 
+			return 0;
+	}
 }

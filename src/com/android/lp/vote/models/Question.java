@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Question implements Serializable {
+public class Question implements Serializable, Comparable<Question> {
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -90,6 +90,10 @@ public class Question implements Serializable {
 	}
 	
 	public List<Answer> getAnswers() {
+		
+		if( this.answers == null )
+			this.answers = new ArrayList<Answer>();
+		
 		return answers;
 	}
 
@@ -110,5 +114,16 @@ public class Question implements Serializable {
 
 	public enum QUESTION_TYPE {
 		RADIO, CHECKBOX, RAW
+	}
+
+	@Override
+	public int compareTo(Question another) {
+
+		if( this.getQ_id() < another.getQ_id())
+			return -1;
+		else if ( this.getQ_id() > another.getQ_id() )
+			return 1;
+		else 
+			return 0;
 	}
 }

@@ -182,7 +182,7 @@ public class ActivityMySurvey extends Activity implements IReactor {
 		// put survey ID into shared preferences
 		
 		Intent detailSurveyIntent = new Intent(this,
-				DetailSurveyView.class);
+				ADetailSurveyView.class);
 //		intent_ActivityQuestions.putExtra("NEW_SURVEY_ID", survey.getS_id());
 
 //		startActivityForResult(intent_ActivityQuestions, GET_CODE);		
@@ -206,8 +206,8 @@ public class ActivityMySurvey extends Activity implements IReactor {
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		
 		if (requestCode == GET_CODE && resultCode == RESULT_OK) {
-			Toast.makeText(getApplicationContext(), "SerializableData: SoFarNothing", //+ data.getSerializableExtra(name),
-					Toast.LENGTH_LONG).show();				
+//			Toast.makeText(getApplicationContext(), "SerializableData: SoFarNothing", //+ data.getSerializableExtra(name),
+//					Toast.LENGTH_LONG).show();				
 		}
 	}
 
